@@ -297,11 +297,6 @@ The dashboard is deployed to AWS EC2 for public access.
 - Region: `us-east-1`
 - Instance Type: `t2.micro`
 
-**Deployment Script**:
-```bash
-./scripts/deploy-dashboard-simple.sh
-```
-
 **Management Commands**:
 ```bash
 # SSH into instance
@@ -355,7 +350,7 @@ ssh -i /tmp/confluent-dash-*.pem ubuntu@3.85.51.5 'pm2 restart dashboard'
 
 ---
 
-## Competition Highlights
+## App Highlights
 
 **Why StreamGuard Wins**:
 
@@ -390,29 +385,6 @@ ssh -i /tmp/confluent-dash-*.pem ubuntu@3.85.51.5 'pm2 restart dashboard'
 
 ---
 
-## 5-Minute Demo Script
-
-### Opening (30 seconds)
-"Hi, I'm presenting **StreamGuard** - a real-time fraud detection platform built on Confluent Cloud that has already prevented $60,000 in fraudulent transactions."
-
-### Architecture (1 minute)
-"StreamGuard uses Confluent's Datagen Source Connector running in Confluent Cloud to generate transaction data, which flows through 6 Kafka topics. Our fraud detection engine consumes these streams in real-time, analyzes them using multiple algorithms, and alerts on suspicious activity in under 200 milliseconds."
-
-### Live Demo (2 minutes)
-"Let me show you the dashboard - this is publicly accessible on AWS. [Open http://ec2-3-85-51-5.compute-1.amazonaws.com:3000]
-
-You can see transactions flowing in real-time. Watch what happens when I create a high-risk transaction... [Generate fraud] ...and there's the alert! Red, pulsing, risk score of 90. This fraud was detected and blocked in under 200 milliseconds."
-
-### Business Impact (1 minute)
-"StreamGuard delivers $10.8 million in annual value through fraud prevention, revenue growth, and operational efficiency. We've detected 10+ fraudulent transactions worth $60,000 just in this demo. At scale, this prevents $2.5 million in fraud annually while enabling $6 million in revenue growth through real-time personalization."
-
-### Technology (30 seconds)
-"Built on Confluent Cloud using the Datagen Source Connector, ksqlDB for stream processing, Schema Registry for governance, and deployed to AWS for public access. The entire platform is production-ready and demonstrates event-driven architecture at its best."
-
-### Closing (10 seconds)
-"StreamGuard - protecting customers in real-time, powered by Confluent Cloud. Thank you!"
-
----
 
 ## Documentation
 
@@ -420,18 +392,6 @@ You can see transactions flowing in real-time. Watch what happens when I create 
 - **Deployment Guide**: [AWS_DEPLOYMENT_SUCCESS.md](docs/AWS_DEPLOYMENT_SUCCESS.md)
 - **Dashboard Guide**: [DASHBOARD_LIVE.md](docs/DASHBOARD_LIVE.md)
 - **Business Impact**: [BUSINESS_IMPACT.md](docs/BUSINESS_IMPACT.md)
-
----
-
-## License
-
-MIT License - see LICENSE file for details
-
----
-
-## Contact
-
-For questions or feedback about this competition submission, please open an issue in this repository.
 
 ---
 
