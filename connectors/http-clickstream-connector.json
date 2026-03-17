@@ -1,0 +1,26 @@
+{
+  "name": "http-clickstream-source",
+  "config": {
+    "connector.class": "io.confluent.connect.http.HttpSourceConnector",
+    "tasks.max": "1",
+    "kafka.topic": "clickstream.events",
+    "url": "http://api-gateway:3001/api/clickstream/batch",
+    "http.request.method": "GET",
+    "request.interval.ms": "5000",
+    "http.request.headers": "Content-Type:application/json",
+    "response.list.pointer": "/events",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url": "http://schema-registry:8081",
+    "value.converter.schemas.enable": "true",
+    "http.offset.mode": "SIMPLE_INCREMENTING",
+    "response.record.offset.pointer": "/timestamp",
+    "kafka.auth.mode": "KAFKA_API_KEY",
+    "behavior.on.error": "log",
+    "behavior.on.malformed.documents": "warn",
+    "transforms": "extractTimestamp",
+    "transforms.extractTimestamp.type": "org.apache.kafka.connect.transforms.TimestampConverter$Value",
+    "transforms.extractTimestamp.field": "timestamp",
+    "transforms.extractTimestamp.target.type": "Timestamp"
+  }
+}

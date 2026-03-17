@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs/
+/tmp/*.log
+
+# Process files
+*.pid
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build outputs
+dist/
+build/
+*.tar.gz
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# SSH keys
+*.pem
+*.key
+
+# AWS credentials
+.aws/
+
+# Claude and Confluent CLI cache
+.claude/
+.confluent/

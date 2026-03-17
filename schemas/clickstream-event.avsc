@@ -1,0 +1,108 @@
+{
+  "type": "record",
+  "name": "ClickstreamEvent",
+  "namespace": "com.customer.experience.clickstream",
+  "doc": "Web and mobile clickstream event schema",
+  "fields": [
+    {
+      "name": "event_id",
+      "type": "string",
+      "doc": "Unique event identifier"
+    },
+    {
+      "name": "session_id",
+      "type": "string",
+      "doc": "User session identifier"
+    },
+    {
+      "name": "customer_id",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Customer ID if authenticated, null for anonymous"
+    },
+    {
+      "name": "event_type",
+      "type": {
+        "type": "enum",
+        "name": "EventType",
+        "symbols": [
+          "PAGE_VIEW",
+          "CLICK",
+          "ADD_TO_CART",
+          "REMOVE_FROM_CART",
+          "SEARCH",
+          "PURCHASE",
+          "LOGIN",
+          "LOGOUT",
+          "VIDEO_PLAY",
+          "VIDEO_COMPLETE"
+        ]
+      },
+      "doc": "Type of clickstream event"
+    },
+    {
+      "name": "page_url",
+      "type": "string",
+      "doc": "Current page URL"
+    },
+    {
+      "name": "referrer",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Referrer URL"
+    },
+    {
+      "name": "product_id",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Product ID if event is product-related"
+    },
+    {
+      "name": "search_query",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Search query if event is a search"
+    },
+    {
+      "name": "device",
+      "type": {
+        "type": "record",
+        "name": "Device",
+        "fields": [
+          {"name": "type", "type": "string"},
+          {"name": "os", "type": "string"},
+          {"name": "browser", "type": "string"}
+        ]
+      },
+      "doc": "Device information"
+    },
+    {
+      "name": "geo_location",
+      "type": {
+        "type": "record",
+        "name": "GeoLocation",
+        "fields": [
+          {"name": "country", "type": "string"},
+          {"name": "region", "type": ["null", "string"], "default": null},
+          {"name": "city", "type": ["null", "string"], "default": null}
+        ]
+      },
+      "doc": "Geographic location"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "logicalType": "timestamp-millis",
+      "doc": "Event timestamp"
+    },
+    {
+      "name": "metadata",
+      "type": {
+        "type": "map",
+        "values": "string"
+      },
+      "default": {},
+      "doc": "Additional event metadata"
+    }
+  ]
+}

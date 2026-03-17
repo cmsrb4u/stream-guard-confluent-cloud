@@ -1,0 +1,29 @@
+{
+  "name": "mongodb-customer-profiles-source",
+  "config": {
+    "connector.class": "com.mongodb.kafka.connect.MongoSourceConnector",
+    "connection.uri": "mongodb://admin:admin@mongodb:27017/?replicaSet=rs0&authSource=admin",
+    "database": "customer_profiles",
+    "collection": "profiles",
+    "topic.prefix": "mongodb",
+    "pipeline": "[{\"$match\": {\"operationType\": {\"$in\": [\"insert\", \"update\", \"replace\"]}}}]",
+    "output.format.key": "json",
+    "output.format.value": "json",
+    "output.json.formatter": "com.mongodb.kafka.connect.source.json.formatter.SimplifiedJson",
+    "output.schema.infer.value": "true",
+    "publish.full.document.only": "true",
+    "change.stream.full.document": "updateLookup",
+    "copy.existing": "true",
+    "copy.existing.max.threads": "2",
+    "copy.existing.queue.size": "5000",
+    "poll.max.batch.size": "1000",
+    "poll.await.time.ms": "5000",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter.schema.registry.url": "http://schema-registry:8081",
+    "value.converter.schemas.enable": "true",
+    "errors.tolerance": "all",
+    "errors.log.enable": "true",
+    "errors.log.include.messages": "true"
+  }
+}

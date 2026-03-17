@@ -1,0 +1,103 @@
+{
+  "type": "record",
+  "name": "CustomerProfile",
+  "namespace": "com.customer.experience.profiles",
+  "doc": "Customer profile schema with enriched behavioral data",
+  "fields": [
+    {
+      "name": "customer_id",
+      "type": "string",
+      "doc": "Unique customer identifier"
+    },
+    {
+      "name": "email",
+      "type": "string",
+      "doc": "Customer email address"
+    },
+    {
+      "name": "phone",
+      "type": ["null", "string"],
+      "default": null,
+      "doc": "Customer phone number"
+    },
+    {
+      "name": "name",
+      "type": {
+        "type": "record",
+        "name": "FullName",
+        "fields": [
+          {"name": "first_name", "type": "string"},
+          {"name": "last_name", "type": "string"}
+        ]
+      },
+      "doc": "Customer full name"
+    },
+    {
+      "name": "address",
+      "type": {
+        "type": "record",
+        "name": "Address",
+        "fields": [
+          {"name": "street", "type": "string"},
+          {"name": "city", "type": "string"},
+          {"name": "state", "type": "string"},
+          {"name": "zip_code", "type": "string"},
+          {"name": "country", "type": "string"}
+        ]
+      },
+      "doc": "Customer address"
+    },
+    {
+      "name": "preferences",
+      "type": {
+        "type": "record",
+        "name": "Preferences",
+        "fields": [
+          {"name": "communication_channel", "type": {"type": "array", "items": "string"}},
+          {"name": "product_categories", "type": {"type": "array", "items": "string"}},
+          {"name": "notification_enabled", "type": "boolean", "default": true}
+        ]
+      },
+      "doc": "Customer preferences"
+    },
+    {
+      "name": "segments",
+      "type": {
+        "type": "array",
+        "items": "string"
+      },
+      "default": [],
+      "doc": "Customer segments (e.g., VIP, HIGH_VALUE, AT_RISK)"
+    },
+    {
+      "name": "lifetime_value",
+      "type": "double",
+      "default": 0.0,
+      "doc": "Customer lifetime value in USD"
+    },
+    {
+      "name": "account_created_at",
+      "type": "long",
+      "logicalType": "timestamp-millis",
+      "doc": "Account creation timestamp"
+    },
+    {
+      "name": "last_activity_at",
+      "type": "long",
+      "logicalType": "timestamp-millis",
+      "doc": "Last activity timestamp"
+    },
+    {
+      "name": "churn_risk_score",
+      "type": ["null", "double"],
+      "default": null,
+      "doc": "Churn risk prediction score (0-100)"
+    },
+    {
+      "name": "version",
+      "type": "int",
+      "default": 1,
+      "doc": "Schema version for evolution"
+    }
+  ]
+}
