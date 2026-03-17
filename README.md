@@ -437,6 +437,4 @@ For questions or feedback about this competition submission, please open an issu
 
 **Built with**: Confluent Cloud, AWS, Node.js, KafkaJS, ksqlDB, Avro, Socket.io
 
-**Status**: ✅ **LIVE AND READY FOR COMPETITION**
-
 **Live Demo**: [http://ec2-3-85-51-5.compute-1.amazonaws.com:3000](http://ec2-3-85-51-5.compute-1.amazonaws.com:3000)
